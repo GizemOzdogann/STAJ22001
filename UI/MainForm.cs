@@ -12,6 +12,7 @@ namespace FarmManagementApp
 {
     public partial class MainForm : Form
     {
+        private readonly IAnimalService _animalService;
 
         private AddAnimalPage _animalPage;
 
@@ -20,6 +21,7 @@ namespace FarmManagementApp
             InitializeComponent();
             CustomizeDesign();
             _animalPage = new AddAnimalPage();
+            
         }
 
         public void LoadForm(Form form)

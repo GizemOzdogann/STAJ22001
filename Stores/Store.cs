@@ -34,9 +34,29 @@ namespace ManagerApp.Stores
         public List<Animal> AnimalList => _animalList; 
         public List<Product> ProductList => _productList;
 
+        public void AddAnimal(Animal animal)
+        {
+            _animalList.Add(animal);
+        }
+
         public void RemoveAnimal(Animal animal)
         {
             _animalList.Remove(animal);
+        }
+
+        public List<Animal> GetAnimals()
+        {
+            return _animalList;
+        }
+
+        public void AddProduct(Product product)
+        {
+            _productList.Add(product);
+        }
+
+        public List<Product> GetProducts()
+        {
+            return _productList;
         }
     }
 }
