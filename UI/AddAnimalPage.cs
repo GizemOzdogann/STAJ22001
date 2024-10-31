@@ -44,7 +44,7 @@ namespace ManagerApp
         {
             labelCashStatus.Text = $"Cash Status: ${GlobalCashStatus.cashStatus:F2}";
         }
-        private void InitializeAgeBox(string animalType)
+        private void InitializeAgeBox(string? animalType)
         {
             AgePick.MaxDropDownItems = 10;
 
@@ -63,7 +63,7 @@ namespace ManagerApp
 
         private void AnimalType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string selectedAnimalType = AnimalType.SelectedItem?.ToString();
+            string? selectedAnimalType = AnimalType.SelectedItem?.ToString();
 
             InitializeAgeBox(selectedAnimalType);
         }
@@ -73,7 +73,8 @@ namespace ManagerApp
             string? animalType = AnimalType.SelectedItem?.ToString();
             string? gender = ChooseGender.SelectedItem?.ToString();
             int? age = AgePick.SelectedItem as int?;
-           
+            string? city = CityBox.Text;
+
             if (!string.IsNullOrEmpty(animalType) && !string.IsNullOrEmpty(gender) && age.HasValue)
             {
                 datagridview1.ClearSelection();
@@ -83,15 +84,15 @@ namespace ManagerApp
                 animal.Id = _nextId++;
                 animal.Gender = gender;
                 animal.Age = age.Value;
-                
-                int rowIndex = datagridview1.Rows.Add(animal.Id, animalType, gender.ToString(), age.Value);
-                
+
+                int rowIndex = datagridview1.Rows.Add(animal.Id, animalType, gender.ToString(), age.Value, city);
+
                 int lifeValue = Convert.ToInt32(datagridview1.Rows[rowIndex].Cells["Lifespan"].Value);
 
                 switch (animalType)
                 {
                     case "Cow":
-                        lifeValue = 100 - (int)age *4;
+                        lifeValue = 100 - (int)age * 4;
                         break;
                     case "Chicken":
                         lifeValue = 100 - (int)age * 10;
@@ -109,18 +110,19 @@ namespace ManagerApp
                 MessageBox.Show("Please select animal type, gender, and age.");
             }
 
-            
+
             ClearComboBoxes();
         }
 
         public void InitializeDataGridView()
         {
-            datagridview1.ColumnCount = 4;
+            datagridview1.ColumnCount = 5;
             datagridview1.Columns[0].Name = "Id";
             datagridview1.Columns[0].Visible = false;
             datagridview1.Columns[1].Name = "Type";
             datagridview1.Columns[2].Name = "Gender";
             datagridview1.Columns[3].Name = "Age";
+            datagridview1.Columns[4].Name = "City";
 
             datagridview1.Columns[1].Width = 90;
             datagridview1.Columns[2].Width = 90;
@@ -226,13 +228,13 @@ namespace ManagerApp
                 switch (animalType)
                 {
                     case "Cow":
-                        iterator = 4;
+                        iterator = 1;
                         break;
                     case "Chicken":
-                        iterator = 20;
+                        iterator = 3;
                         break;
                     case "Sheep":
-                        iterator = 10;
+                        iterator = 2;
                         break;
                 }
 
@@ -255,6 +257,5 @@ namespace ManagerApp
                 }
             }
         }
-
     }
 }
