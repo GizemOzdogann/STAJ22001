@@ -21,6 +21,7 @@ namespace ManagerApp.UI
         public productsPage()
         {
             InitializeComponent();
+            BindProductsToGrid();
         }
 
 
@@ -144,6 +145,11 @@ namespace ManagerApp.UI
         {
             labelCashStatus.Text = $"Cash Status: ${GlobalCashStatus.  cashStatus:F2}";
         }
+        private void BindProductsToGrid()
+        {
+            
+        }
+
 
     }
 }

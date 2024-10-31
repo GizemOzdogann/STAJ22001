@@ -50,7 +50,6 @@ namespace FarmManagementApp
 
             form.Show();
 
-            //TimerHelper.GetTimer(_productsPage.timer1, timer1_Tick);
         }
         
         private void CustomizeDesign()

@@ -1,5 +1,6 @@
 ﻿using ManagerApp.Entities;
 using ManagerApp.Factories;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -58,5 +59,28 @@ namespace ManagerApp.Stores
         {
             return _productList;
         }
+
+        public void SaveAnimals()
+        {
+            var json = JsonConvert.SerializeObject(_animalList);
+            File.WriteAllText("animals.json", json);
+        }
+
+        public void LoadAnimals()
+        {
+            if (File.Exists("animals.json"))
+            {
+                var json = File.ReadAllText("animals.json");
+                _animalList = JsonConvert.DeserializeObject<List<Animal>>(json) ?? new List<Animal>();
+            }
+            else
+            {
+                _animalList = new List<Animal>();  
+            }
+        }
+
+       
+
+
     }
 }

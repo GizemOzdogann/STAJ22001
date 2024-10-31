@@ -42,6 +42,7 @@
             panel1 = new Panel();
             AnimalType = new ComboBox();
             labelCashStatus = new Label();
+            CityBox = new TextBox();
             ((System.ComponentModel.ISupportInitialize)datagridview1).BeginInit();
             SuspendLayout();
             // 
@@ -186,11 +187,19 @@
             labelCashStatus.Size = new Size(0, 20);
             labelCashStatus.TabIndex = 11;
             // 
+            // CityBox
+            // 
+            CityBox.Location = new Point(54, 379);
+            CityBox.Name = "CityBox";
+            CityBox.Size = new Size(125, 27);
+            CityBox.TabIndex = 12;
+            // 
             // AddAnimalPage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(CityBox);
             Controls.Add(labelCashStatus);
             Controls.Add(AnimalType);
             Controls.Add(panel1);
@@ -220,5 +229,6 @@
         private Panel panel1;
         private ComboBox AnimalType;
         private Label labelCashStatus;
+        private TextBox CityBox;
     }
 }
